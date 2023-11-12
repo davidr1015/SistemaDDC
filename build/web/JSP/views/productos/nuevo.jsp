@@ -10,41 +10,50 @@
             <form action="/SistemaDDC/Servlet_peticiones" method="POST" enctype="multipart/form-data">
 
                     <div class="row">
-                        <div class="col-md-8 pr-1">
+                        <div class="col-md-10 pr-1">
                             <div class="form-group">
                                 <label>Foto</label>
                                 <input type="file" name="foto" class="form-control" accept="image/*">
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-4 pr-1">
-                            <div class="form-group">
-                                <label>Precio</label>
-                                <input type="number" name="precio" class="form-control" value="" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 pr-1">
-                            <div class="form-group">
-                                <label>Cantidad</label>
-                                <input type="number" name="cantidad" class="form-control" value="" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 pr-1">
+                
+                 <div class="row">
+                        <div class="col-md-10 pr-1">
                             <div class="form-group">
                                 <label>Descripcion</label>
                                 <input type="text" class="form-control" name="descripcion" value="" required>
                             </div>
                         </div>
-
+                     
+                     
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-3 pr-1">
+                            <div class="form-group">
+                                <label>Precio</label>
+                                <input type="number" name="precio" class="form-control" value="" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 pr-1">
+                            <div class="form-group">
+                                <label>Cantidad Minima</label>
+                                <input type="number" name="cantidad_minima" class="form-control" value="">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 pr-1">
+                            <div class="form-group">
+                                <label>Ubicacion</label>
+                                <input type="ubicacion" name="ubicacion" class="form-control" value="">
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                
 
 
                     <div class="row">

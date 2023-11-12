@@ -30,9 +30,9 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Imagen</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Descripcion</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Precio</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Cantidad</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Descripcion</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cantidad Minima</th>
                                     <th class="text-secondary opacity-7"></th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
@@ -44,14 +44,15 @@
                                             <p class="text-xs font-weight-bold mb-0"> <%= p.getFoto() %></p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0"> <%=p.getPrecio() %></p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0"> <%= p.getCantidad() %></p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
                                             <p class="text-xs font-weight-bold mb-0"> <%= p.getDescripcion() %></p>
                                         </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <p class="text-xs font-weight-bold mb-0"> $<%= p.getPrecio() %></p>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <p class="text-xs font-weight-bold mb-0"> <%= p.getCantidad_minima() %></p>
+                                        </td>
+                                        
                                         <td class="align-middle text-center">
                                             <!-- Enlace para editar -->
                                             <a href="/SistemaDDC/Servlet_peticiones?editarProducto=<%= p.getId() %>">Editar</a>

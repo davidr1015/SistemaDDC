@@ -3,12 +3,12 @@ package Operaciones;
 import java.sql.*;
 
 public class Compra {
-         private String id;
-         private String id_usuario;
-         private String total;
+         private int id;
+         private int id_usuario;
+         private double total;
          private String fecha_registro;
 
-    public Compra(String id, String id_usuario, String total, String fecha_registro) {
+    public Compra(int id, int id_usuario, double total, String fecha_registro) {
         this.id = id;
         this.id_usuario = id_usuario;
         this.total = total;
@@ -16,11 +16,7 @@ public class Compra {
     }
 
     
-
-    
-    
-    
-    
+         
      public static synchronized boolean insertar(Compra p)  throws SQLException
    {                    
               DBManager dbm = new DBManager();
@@ -29,10 +25,10 @@ public class Compra {
               PreparedStatement st=con.prepareStatement("INSERT INTO productos(id,descripcion,"+
                                                 "precio,cantidad,foto,activo)"+
                                                 "VALUES(?,?,?,?,?,?)");
-             st.setString(1, p.getId());
-             st.setString(2, p.getId_usuario());
-             st.setString(3, p.getTotal());
-             st.setString(4, p.getFecha_registro());
+//             st.setString(1, p.getId());
+//             st.setString(2, p.getId_usuario());
+//             st.setString(3, p.getTotal());
+//             st.setString(4, p.getFecha_registro());
              int res=st.executeUpdate();
              st.close();
              dbm.closeConnection( con );
@@ -47,10 +43,10 @@ public class Compra {
               PreparedStatement st=con.prepareStatement("INSERT INTO tclientes(cedula,nombres,"+
                                                 "apellidos,direccion,email,celular)"+
                                                 "VALUES(?,?,?,?,?,?)");
-             st.setString(1, p.getId());
-             st.setString(2, p.getId_usuario());
-             st.setString(3, p.getTotal());
-             st.setString(4, p.getFecha_registro());
+//             st.setString(1, p.getId());
+//             st.setString(2, p.getId_usuario());
+//             st.setString(3, p.getTotal());
+//             st.setString(4, p.getFecha_registro());
              int res=st.executeUpdate();
              st.close();
              dbm.closeConnection( con );
@@ -65,10 +61,10 @@ public class Compra {
               PreparedStatement st=con.prepareStatement("INSERT INTO tclientes(cedula,nombres,"+
                                                 "apellidos,direccion,email,celular)"+
                                                 "VALUES(?,?,?,?,?,?)");
-             st.setString(1, p.getId());
-             st.setString(2, p.getId_usuario());
-             st.setString(3, p.getTotal());
-             st.setString(4, p.getFecha_registro());
+//             st.setString(1, p.getId());
+//             st.setString(2, p.getId_usuario());
+//             st.setString(3, p.getTotal());
+//             st.setString(4, p.getFecha_registro());
              int res=st.executeUpdate();
              st.close();
              dbm.closeConnection( con );
@@ -83,37 +79,37 @@ public class Compra {
               PreparedStatement st=con.prepareStatement("INSERT INTO tclientes(cedula,nombres,"+
                                                 "apellidos,direccion,email,celular)"+
                                                 "VALUES(?,?,?,?,?,?)");
-             st.setString(1, p.getId());
-             st.setString(2, p.getId_usuario());
-             st.setString(3, p.getTotal());
-             st.setString(4, p.getFecha_registro());
+//             st.setString(1, p.getId());
+//             st.setString(2, p.getId_usuario());
+//             st.setString(3, p.getTotal());
+//             st.setString(4, p.getFecha_registro());
              int res=st.executeUpdate();
              st.close();
              dbm.closeConnection( con );
              return res==1;      
    }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getId_usuario() {
+    public int getId_usuario() {
         return id_usuario;
     }
 
-    public void setId_usuario(String id_usuario) {
+    public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
 
-    public String getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
@@ -124,6 +120,8 @@ public class Compra {
     public void setFecha_registro(String fecha_registro) {
         this.fecha_registro = fecha_registro;
     }
+
+    
 
     
    

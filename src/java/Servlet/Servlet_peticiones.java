@@ -70,7 +70,7 @@ public class Servlet_peticiones extends HttpServlet {
 
             String page = request.getParameter("page");
 
-//        Inicio Productos
+//        ****Inicio Productos****
             String editarProducto = request.getParameter("editarProducto");
             String eliminarProducto = request.getParameter("eliminarProducto");
             
@@ -94,17 +94,19 @@ public class Servlet_peticiones extends HttpServlet {
             }
                  
             
-//          Fin Productos
+//          ****Fin Productos****
+
+//          **** Inicio Inventario****
 
             if ("inventario".equals(page)) {
+                Vector v = Producto.consultar();
+                request.setAttribute("productos", v);
                 request.getRequestDispatcher("/JSP/views/inventario/index.jsp").forward(request, response);
             }
 
             if ("clientes".equals(page)) {
                 request.getRequestDispatcher("/JSP/views/clientes/index.jsp").forward(request, response);
             }
-
-            
 
             if ("compras".equals(page)) {
                 request.getRequestDispatcher("/JSP/views/compras/index.jsp").forward(request, response);
@@ -134,33 +136,40 @@ public class Servlet_peticiones extends HttpServlet {
             String actualizarProducto = request.getParameter("precio");
             
             if (registrarProducto != null) {
-                String id = "";
+                int id = 0;
                 String descripcion = request.getParameter("descripcion");
-                String cantidad = request.getParameter("cantidad");
-                String precio = request.getParameter("precio");
+                double precio = Double.parseDouble(request.getParameter("precio"));
+                int cantidad_minima = Integer.parseInt(request.getParameter("cantidad_minima"));
+                String ubicacion = request.getParameter("ubicacion");
                 String foto = request.getParameter("foto");
-                String activo = "1";
+                int activo = 1;
                 
-                if (Producto.insertar(new Producto(id, descripcion, precio, cantidad, foto, activo))) {
+                if (Producto.insertar(new Producto(id, descripcion, precio, cantidad_minima, ubicacion, foto))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");
                 }
                 
             }
             
-            if (actualizarProducto != null) {
-                
-                String id = request.getParameter("id");
-                String descripcion = request.getParameter("descripcion");
-                String cantidad = request.getParameter("cantidad");
-                String precio = request.getParameter("precio");
-                String foto = request.getParameter("foto");
-                String activo = "1";
-                
-                if (Producto.actualizar(new Producto(id, descripcion, precio, cantidad, foto, activo))) {
-                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");    
-                }
-                
+            String productos = request.getParameter("productos");
+             if (productos != null) {
+                Vector v = Producto.consultarPorId("1");
+                request.setAttribute("producto", v);
+                request.getRequestDispatcher("/JSP/views/productos/editar.jsp").forward(request, response);
             }
+//            if (actualizarProducto != null) {
+//                
+//                String id = request.getParameter("id");
+//                String descripcion = request.getParameter("descripcion");
+//                String cantidad = request.getParameter("cantidad");
+//                String precio = request.getParameter("precio");
+//                String foto = request.getParameter("foto");
+//                String activo = "1";
+//                
+//                if (Producto.actualizar(new Producto(id, descripcion, precio, cantidad, foto, activo))) {
+//                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");    
+//                }
+//                
+//            }
             
 
 //            FIN NAVBAR
