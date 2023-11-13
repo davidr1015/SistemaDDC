@@ -97,6 +97,8 @@ public class Servlet_peticiones extends HttpServlet {
             }
 
             if ("clientes".equals(page)) {
+                Vector v = Cliente.consultar();
+                request.setAttribute("cliente", v);
                 request.getRequestDispatcher("/JSP/views/clientes/index.jsp").forward(request, response);
             }
 
@@ -145,6 +147,46 @@ public class Servlet_peticiones extends HttpServlet {
                 if (Producto.insertar(new Producto(id, descripcion, precio, cantidad_minima, ubicacion, newFileName))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");
                 }
+            }
+
+            
+            String productos = request.getParameter("productos");
+             if (productos != null) {
+                Vector v = Producto.consultarPorId("1");
+                request.setAttribute("producto", v);
+                request.getRequestDispatcher("/JSP/views/productos/editar.jsp").forward(request, response);
+            }
+//            if (actualizarProducto != null) {
+//                
+//                String id = request.getParameter("id");
+//                String descripcion = request.getParameter("descripcion");
+//                String cantidad = request.getParameter("cantidad");
+//                String precio = request.getParameter("precio");
+//                String foto = request.getParameter("foto");
+//                String activo = "1";
+//                
+//                if (Producto.actualizar(new Producto(id, descripcion, precio, cantidad, foto, activo))) {
+//                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");    
+//                }
+//                
+//            }
+                
+//          Clientes
+            String registrarCliente = request.getParameter("registrarCliente");
+            
+            if (registrarCliente != null) {
+                String cedula=request.getParameter("cedula");
+                String nombre=request.getParameter("nombre");
+                String correo=request.getParameter("correo");
+                String telefono=request.getParameter("telefono");
+                String fecha_registro=request.getParameter("fecha_registro");
+                String activo=request.getParameter("activo");
+                
+               
+                if (Cliente.insertar(new Cliente(cedula,nombre,correo,telefono,activo,fecha_registro))) {
+                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=clientes");
+                }
+                
             }
 
             if (actualizarProducto != null) {

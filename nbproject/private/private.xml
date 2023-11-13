@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/header.jsp</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/inventario/index.jsp</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Servlet/Servlet_peticiones.java</file>
@@ -10,6 +11,18 @@
             <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/usuarios/nuevo.jsp</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/footer.jsp</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/usuarios/index.jsp</file>
+=======
+<<<<<<< Updated upstream
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Compra.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Servlet/Servlet_peticiones.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Venta.java</file>
+=======
+            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/productos/index.jsp</file>
+            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/inventario/index.jsp</file>
+            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/src/java/Servlet/VerificaLogin.java</file>
+            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Producto.java</file>
+>>>>>>> Stashed changes
+>>>>>>> 85025e28cda991b84cdbbfbb12b7bcfc6fb65901
         </group>
     </open-files>
 </project-private>
