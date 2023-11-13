@@ -33,8 +33,12 @@
                         <tbody>
                             <% for (Producto p : productos) {%>
                             <tr>
-                                <td>
-                                    <p class="text-xs font-weight-bold mb-0"> <%= p.getFoto()%></p>
+                                <td width="150px">
+                                    <div class="d-flex px-1 py-1">
+                                            <div>
+                                                <img src="public/uploads/<%=p.getFoto() %>" class="avatar avatar-xl me-3" alt="user1">
+                                            </div>
+                                        </div>
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <p class="text-xs font-weight-bold mb-0"> <%= p.getDescripcion()%></p>

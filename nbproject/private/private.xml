@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Compra.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/header.jsp</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/inventario/index.jsp</file>
             <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Servlet/Servlet_peticiones.java</file>
-            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Venta.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Usuario.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/usuarios/nuevo.jsp</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/footer.jsp</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/usuarios/index.jsp</file>
         </group>
     </open-files>
 </project-private>

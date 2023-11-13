@@ -7,7 +7,7 @@
             <h5 class="card-title">Agregar nuevo producto</h5>
         </div>
         <div class="card-body">
-            <form action="/SistemaDDC/Servlet_peticiones" method="POST" enctype="multipart/form-data">
+            <form action="/SistemaDDC/Servlet_peticiones" method="POST" enctype="multipart/form-data" autocomplete="off">
 
                     <div class="row">
                         <div class="col-md-10 pr-1">
@@ -47,7 +47,7 @@
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
                                 <label>Ubicacion</label>
-                                <input type="ubicacion" name="ubicacion" class="form-control" value="">
+                                <input type="text" name="ubicacion" class="form-control" value="">
                             </div>
                         </div>
                         

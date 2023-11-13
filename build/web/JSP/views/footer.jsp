@@ -34,10 +34,10 @@
 </main>
 
 <!--   Core JS Files   -->
-<script src="<?php echo constant('URL'); ?>public/js/core/popper.min.js"></script>
-<script src="<?php echo constant('URL'); ?>public/js/core/bootstrap.min.js"></script>
-<script src="<?php echo constant('URL'); ?>public/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="<?php echo constant('URL'); ?>public/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="/SistemaDDC/public/js/core/popper.min.js"></script>
+<script src="/SistemaDDC/public/js/core/bootstrap.min.js"></script>
+<script src="/SistemaDDC/public/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="/SistemaDDC/public/js/plugins/smooth-scrollbar.min.js"></script>
 
 
 <script>
@@ -52,7 +52,7 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="<?php echo constant('URL'); ?>public/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+<script src="/SistemaDDC/public/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 
 <script>
   var tabla = document.querySelector("#table");

@@ -67,6 +67,15 @@
         </li>
         
         <li class="nav-item">
+          <a href="/SistemaDDC/Servlet_peticiones?page=usuarios" class="nav-link border-bottom" id="nav-movimientos">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M322 606V290L202 410l-42-42 193-193 193 193-42 42-122-121v317h-60Zm285 369L414 781l42-41 120 120V544h60v317l122-121 42 42-193 193Z"/></svg>
+            </div>
+            <span class="nav-link-text ms-1">Usuarios</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
           <a href="/SistemaDDC/Servlet_peticiones?page=productos" class="nav-link border-bottom" id="nav-movimientos">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M322 606V290L202 410l-42-42 193-193 193 193-42 42-122-121v317h-60Zm285 369L414 781l42-41 120 120V544h60v317l122-121 42 42-193 193Z"/></svg>

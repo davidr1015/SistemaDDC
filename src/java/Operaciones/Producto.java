@@ -43,12 +43,13 @@ public class Producto {
         Connection con = dbm.getConnection();
 //
         PreparedStatement st = con.prepareStatement("INSERT INTO productos(descripcion,"
-                + "precio,cantidad_minima,foto)"
-                + "VALUES(?,?,?,?)");
+                + "precio,cantidad_minima,ubicacion, foto)"
+                + "VALUES(?,?,?,?,?)");
         st.setString(1, p.getDescripcion());
         st.setDouble(2, p.getPrecio());
         st.setInt(3, p.getCantidad_minima());
-        st.setString(4, p.getFoto());
+        st.setString(4, p.getUbicacion());
+        st.setString(5, p.getFoto());
         int res = st.executeUpdate();
         st.close();
         dbm.closeConnection(con);
@@ -59,12 +60,13 @@ public class Producto {
         DBManager dbm = new DBManager();
         Connection con = dbm.getConnection();
 
-        PreparedStatement st = con.prepareStatement("UPDATE productos SET descripcion = ?, precio = ?, cantidad_minima = ?, ubicacion,= ?,  foto = ?  WHERE id = ?");
+        PreparedStatement st = con.prepareStatement("UPDATE productos SET descripcion = ?, precio = ?, cantidad_minima = ?, ubicacion = ?,  foto = ?  WHERE id = ?");
         st.setString(1, p.getDescripcion());
         st.setDouble(2, p.getPrecio());
-        st.setInt(3, p.getCantidad());
-        st.setString(4, p.getFoto());
-        st.setInt(5, p.getId());
+        st.setInt(3, p.getCantidad_minima());
+        st.setString(4, p.getUbicacion());
+        st.setString(5, p.getFoto());
+        st.setInt(6, p.getId());
 
         int res = st.executeUpdate();
         st.close();

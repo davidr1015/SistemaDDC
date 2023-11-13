@@ -1,12 +1,12 @@
 
+<%@page import="Operaciones.Usuario"%>
 <%@page import="java.util.Vector"%>
-<%@page import="Operaciones.Producto"%>
 <jsp:include page="/JSP/views/header.jsp" />
 
 
 <%
-    Vector<Producto> productos = (Vector<Producto>) request.getAttribute("productos");
-    request.removeAttribute("productos");
+    Vector<Usuario> usuarios = (Vector<Usuario>) request.getAttribute("usuarios");
+    request.removeAttribute("usuarios");
 %> 
 
 
@@ -14,12 +14,12 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Productos</h4>
+            <h4 class="card-title">Usuarios</h4>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="update ml-4">
-                    <a class="btn bg-gradient-primary mb-0" href="/SistemaDDC/JSP/views/productos/nuevo.jsp">Agregar nuevo producto</a>
+                    <a class="btn bg-gradient-primary mb-0" href="/SistemaDDC/JSP/views/usuarios/nuevo.jsp">Agregar nuevo usuario</a>
                 </div>
             </div>
             <br>
@@ -29,41 +29,38 @@
                         <table class="table align-items-center mb-0" id="table">
                             <thead>
                                 <tr>
-                                    <th width="150px" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Imagen</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Descripcion</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Precio</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cantidad Minima</th>
+                                    <th width="150px" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nombre</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Rol</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username</th>
                                     <th class="text-secondary opacity-7"></th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% for (Producto p : productos) {%>
+                                <% for (Usuario p : usuarios) {%>
                                 <tr>
-                                    <td>
-                                        <div class="d-flex px-1 py-1">
-                                            <div>
-                                                <img src="public/uploads/<%=p.getFoto() %>" class="avatar avatar-xl me-3" alt="user1">
-                                            </div>
-                                        </div>
+
+                                    <td class="align-middle text-center text-sm">
+                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getId()%></p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getDescripcion()%></p>
+                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getNombre()%></p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0"> $<%= p.getPrecio()%></p>
+                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getRol()%></p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getCantidad_minima()%></p>
+                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getLogin()%></p>
                                     </td>
 
                                     <td class="align-middle text-center">
                                         <!-- Enlace para editar -->
-                                        <a href="/SistemaDDC/Servlet_peticiones?editarProducto=<%= p.getId()%>">Editar</a>
+                                        <a href="/SistemaDDC/Servlet_peticiones?editarUsuario=<%= p.getId()%>">Editar</a>
 
                                     </td>
                                     <td class="align-middle">
-                                        <a href="/SistemaDDC/Servlet_peticiones?eliminarProducto=<%= p.getId()%>" onclick="return confirmDelete()">Eliminar</a>
+                                        <a href="/SistemaDDC/Servlet_peticiones?eliminarUsuario=<%= p.getId()%>" onclick="return confirmDelete()">Eliminar</a>
                                     </td>
                                 </tr>
                                 <% }%> 
