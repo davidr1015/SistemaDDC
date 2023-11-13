@@ -4,11 +4,11 @@
 <jsp:include page="/JSP/views/header.jsp" />
 
 
-<% 
-       Vector<Producto> productos = (Vector<Producto>)request.getAttribute("productos"); 
-       request.removeAttribute("productos");
-       %> 
-    
+<%
+    Vector<Producto> productos = (Vector<Producto>) request.getAttribute("productos");
+    request.removeAttribute("productos");
+%> 
+
 
 
 <div class="col-md-12">
@@ -38,31 +38,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                             <% for (Producto p : productos) { %>
-                                    <tr>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0"> <%= p.getFoto() %></p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0"> <%= p.getDescripcion() %></p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0"> $<%= p.getPrecio() %></p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0"> <%= p.getCantidad_minima() %></p>
-                                        </td>
-                                        
-                                        <td class="align-middle text-center">
-                                            <!-- Enlace para editar -->
-                                            <a href="/SistemaDDC/Servlet_peticiones?editarProducto=<%= p.getId() %>">Editar</a>
-                                            
-                                        </td>
-                                        <td class="align-middle">
-                                            <a href="/SistemaDDC/Servlet_peticiones?eliminarProducto=<%= p.getId() %>" onclick="return confirmDelete()">Eliminar</a>
-                                        </td>
-                                    </tr>
-                                <% } %> 
+                                <% for (Producto p : productos) {%>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-1 py-1">
+                                            <div>
+                                                <img src="public/uploads/<%=p.getFoto() %>" class="avatar avatar-xl me-3" alt="user1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getDescripcion()%></p>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <p class="text-xs font-weight-bold mb-0"> $<%= p.getPrecio()%></p>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getCantidad_minima()%></p>
+                                    </td>
+
+                                    <td class="align-middle text-center">
+                                        <!-- Enlace para editar -->
+                                        <a href="/SistemaDDC/Servlet_peticiones?editarProducto=<%= p.getId()%>">Editar</a>
+
+                                    </td>
+                                    <td class="align-middle">
+                                        <a href="/SistemaDDC/Servlet_peticiones?eliminarProducto=<%= p.getId()%>" onclick="return confirmDelete()">Eliminar</a>
+                                    </td>
+                                </tr>
+                                <% }%> 
                             </tbody>
                         </table>
                     </form>
@@ -74,12 +78,12 @@
 
 <!-- ... (resto del código) -->
 <script type="text/javascript">
-function confirmDelete() {
+    function confirmDelete() {
 //Ingresamos un mensaje a mostrar
-var mensaje = confirm("¿Deseas eliminar este registro?");
+        var mensaje = confirm("¿Deseas eliminar este registro?");
 //Detectamos si el usuario acepto el mensaje
-return mensaje;
-}
+        return mensaje;
+    }
 </script>
 
 <jsp:include page="/JSP/views/footer.jsp" />

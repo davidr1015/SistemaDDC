@@ -5,10 +5,16 @@
 package Servlet;
 
 import Operaciones.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.UUID;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -141,10 +148,37 @@ public class Servlet_peticiones extends HttpServlet {
                 double precio = Double.parseDouble(request.getParameter("precio"));
                 int cantidad_minima = Integer.parseInt(request.getParameter("cantidad_minima"));
                 String ubicacion = request.getParameter("ubicacion");
-                String foto = request.getParameter("foto");
                 int activo = 1;
+                String newFileName = "";
                 
-                if (Producto.insertar(new Producto(id, descripcion, precio, cantidad_minima, ubicacion, foto))) {
+               Part filePart = request.getPart("foto");
+            String originalFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+            
+            if (!originalFileName.isEmpty()) {
+                // Genera un nuevo nombre de archivo único
+                String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+                newFileName = UUID.randomUUID().toString() + fileExtension;
+
+                // Define la carpeta de destino en el servidor
+                String uploadPath = getServletContext().getRealPath("") + "public/uploads";
+                
+                // Asegúrate de que la carpeta de destino exista; si no, créala
+                File uploadDir = new File(uploadPath);
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdir();
+                }
+
+                // Ruta completa del nuevo archivo de imagen
+                String newFilePath = uploadPath + File.separator + newFileName;
+
+                // Lee el contenido del archivo subido y guárdalo con el nuevo nombre
+                try (InputStream input = filePart.getInputStream()) {
+                    Files.copy(input, Paths.get(newFilePath), StandardCopyOption.REPLACE_EXISTING);
+                }
+
+                
+            }
+                if (Producto.insertar(new Producto(id, descripcion, precio, cantidad_minima, ubicacion, newFileName))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");
                 }
                 
