@@ -112,6 +112,8 @@ public class Servlet_peticiones extends HttpServlet {
             }
 
             if ("clientes".equals(page)) {
+                Vector v = Cliente.consultar();
+                request.setAttribute("cliente", v);
                 request.getRequestDispatcher("/JSP/views/clientes/index.jsp").forward(request, response);
             }
 
@@ -204,7 +206,24 @@ public class Servlet_peticiones extends HttpServlet {
 //                }
 //                
 //            }
+                
+//          Clientes
+            String registrarCliente = request.getParameter("registrarCliente");
             
+            if (registrarCliente != null) {
+                String cedula=request.getParameter("cedula");
+                String nombre=request.getParameter("nombre");
+                String correo=request.getParameter("correo");
+                String telefono=request.getParameter("telefono");
+                String fecha_registro=request.getParameter("fecha_registro");
+                String activo=request.getParameter("activo");
+                
+               
+                if (Cliente.insertar(new Cliente(cedula,nombre,correo,telefono,activo,fecha_registro))) {
+                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=clientes");
+                }
+                
+            }
 
 //            FIN NAVBAR
           
