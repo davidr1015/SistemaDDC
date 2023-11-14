@@ -17,3 +17,7 @@ button {
 #sidenav-collapse-main {
     height: 70%
 }
+
+.filtro {
+    display: none !important;
+}
