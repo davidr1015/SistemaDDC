@@ -47,7 +47,7 @@
           <li class="nav-item " >
               <a href="/SistemaDDC/Servlet_peticiones?page=inventario" id="nav-inventario"  class="nav-link">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M431 922H180q-24 0-42-18t-18-42V280q0-24 15.5-42t26.5-18h202q7-35 34.5-57.5T462 140q36 0 63.5 22.5T560 220h202q24 0 42 18t18 42v203h-60V280H656v130H286V280H180v582h251v60Zm189-25L460 737l43-43 117 117 239-239 43 43-282 282ZM480 276q17 0 28.5-11.5T520 236q0-17-11.5-28.5T480 196q-17 0-28.5 11.5T440 236q0 17 11.5 28.5T480 276Z"/></svg>
+            <img width="23" height="23" src="https://img.icons8.com/wired/64/clipboard-list.png" alt="clipboard-list"/>
                 <title>Inventario</title> 
             </div>
             <span class="nav-link-text ms-1">Inventario</span>
@@ -57,7 +57,7 @@
         <li class="nav-item">
           <a href="/SistemaDDC/Servlet_peticiones?page=clientes" class="nav-link border-bottom" id="nav-movimientos">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M322 606V290L202 410l-42-42 193-193 193 193-42 42-122-121v317h-60Zm285 369L414 781l42-41 120 120V544h60v317l122-121 42 42-193 193Z"/></svg>
+            <img width="23" height="23" src="https://img.icons8.com/ios/50/crowd.png" alt="crowd"/>
             </div>
             <span class="nav-link-text ms-1">Clientes</span>
           </a>
@@ -66,7 +66,7 @@
         <li class="nav-item">
           <a href="/SistemaDDC/Servlet_peticiones?page=usuarios" class="nav-link border-bottom" id="nav-movimientos">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M322 606V290L202 410l-42-42 193-193 193 193-42 42-122-121v317h-60Zm285 369L414 781l42-41 120 120V544h60v317l122-121 42 42-193 193Z"/></svg>
+            <img width="25" height="25" src="https://img.icons8.com/pastel-glyph/64/gender-neutral-user.png" alt="gender-neutral-user"/>
             </div>
             <span class="nav-link-text ms-1">Usuarios</span>
           </a>
@@ -75,7 +75,7 @@
         <li class="nav-item">
           <a href="/SistemaDDC/Servlet_peticiones?page=productos" class="nav-link border-bottom" id="nav-movimientos">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M322 606V290L202 410l-42-42 193-193 193 193-42 42-122-121v317h-60Zm285 369L414 781l42-41 120 120V544h60v317l122-121 42 42-193 193Z"/></svg>
+            <img width="25" height="25" src="https://img.icons8.com/dotty/80/new-product.png" alt="new-product"/>
             </div>
             <span class="nav-link-text ms-1">Productos</span>
           </a>
@@ -85,7 +85,7 @@
         <li class="nav-item">
           <a href="/SistemaDDC/Servlet_peticiones?page=compras" class="nav-link border-bottom">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M160 796V276H80v-60h140v520h620v60H160Zm59.115 180Q194 976 177 958.323q-17-17.677-17-42.5t17-42.323q17-17.5 42.115-17.5 25.115 0 43 17.677t17.885 42.5Q280 941 262.115 958.5t-43 17.5ZM290 666V446h220v220H290Zm60-60h100V506H350v100Zm220 60V446h220v220H570Zm60-60h100V506H630v100Zm149.823 370Q755 976 737.5 958.323t-17.5-42.5Q720 891 737.677 873.5t42.5-17.5Q805 856 822.5 873.677t17.5 42.5Q840 941 822.323 958.5t-42.5 17.5ZM350 606h100-100Zm280 0h100-100Z"/></svg>
+            <img width="20" height="20" src="https://img.icons8.com/ios/50/buy--v1.png" alt="buy--v1"/>
             </div>
             <span class="nav-link-text ms-1">Compras</span>
           </a>
@@ -94,7 +94,7 @@
         <li class="nav-item">
           <a href="/SistemaDDC/Servlet_peticiones?page=caja" class="nav-link border-bottom">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M160 796V276H80v-60h140v520h620v60H160Zm59.115 180Q194 976 177 958.323q-17-17.677-17-42.5t17-42.323q17-17.5 42.115-17.5 25.115 0 43 17.677t17.885 42.5Q280 941 262.115 958.5t-43 17.5ZM290 666V446h220v220H290Zm60-60h100V506H350v100Zm220 60V446h220v220H570Zm60-60h100V506H630v100Zm149.823 370Q755 976 737.5 958.323t-17.5-42.5Q720 891 737.677 873.5t42.5-17.5Q805 856 822.5 873.677t17.5 42.5Q840 941 822.323 958.5t-42.5 17.5ZM350 606h100-100Zm280 0h100-100Z"/></svg>
+            <img width="20" height="20" src="https://img.icons8.com/ios/50/cash-register.png" alt="cash-register"/>
             </div>
             <span class="nav-link-text ms-1">Caja</span>
           </a>
@@ -104,7 +104,7 @@
             <form action="/SistemaDDC/Servlet_peticiones" method="POST">
                 <button type="submit" name="productos" class="nav-link border-bottom" id="nav-movimientos">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M160 796V276H80v-60h140v520h620v60H160Zm59.115 180Q194 976 177 958.323q-17-17.677-17-42.5t17-42.323q17-17.5 42.115-17.5 25.115 0 43 17.677t17.885 42.5Q280 941 262.115 958.5t-43 17.5ZM290 666V446h220v220H290Zm60-60h100V506H350v100Zm220 60V446h220v220H570Zm60-60h100V506H630v100Zm149.823 370Q755 976 737.5 958.323t-17.5-42.5Q720 891 737.677 873.5t42.5-17.5Q805 856 822.5 873.677t17.5 42.5Q840 941 822.323 958.5t-42.5 17.5ZM350 606h100-100Zm280 0h100-100Z"/></svg>
+            <img width="25" height="25" src="https://img.icons8.com/ios/50/total-sales-1.png" alt="total-sales-1"/>
             </div>
             <span class="nav-link-text ms-1">Ventas</span>
           </button>
