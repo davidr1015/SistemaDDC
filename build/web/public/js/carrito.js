@@ -53,6 +53,7 @@ function agregarAlCarrito(event) {
 
     const columnaProducto = document.createElement("h6");
     columnaProducto.textContent = nombre;
+    columnaProducto.style = "width: 200px;, overflow: hidden; text-overflow: ellipsis;";
     columnaProducto.classList.add("my-0");
 
     const columnaPrecio = document.createElement("small");
