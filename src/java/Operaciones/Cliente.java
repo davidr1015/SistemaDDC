@@ -31,13 +31,12 @@ public class Cliente {
               Connection con = dbm.getConnection();
 
               PreparedStatement st=con.prepareStatement("INSERT INTO clientes(cedula,nombre,"+
-                                                "correo,telefono,fecha_registro)"+
-                                                "VALUES(?,?,?,?,'current_timestamp()')");
+                                                "correo,telefono)"+
+                                                "VALUES(?,?,?,?)");
              st.setString(1, p.getCedula());
              st.setString(2, p.getNombre());
              st.setString(3, p.getCorreo());
              st.setString(4, p.getTelefono());
-             st.setString(4, p.getFecha_registro());
              int res=st.executeUpdate();
              st.close();
              dbm.closeConnection( con );

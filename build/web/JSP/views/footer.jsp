@@ -11,22 +11,7 @@
           creado por Carlos Tirado & David Delgado
         </div>
       </div>
-      <!-- <div class="col-lg-6">
-        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-          <li class="nav-item">
-            <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-          </li>
-          <li class="nav-item">
-            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-          </li>
-        </ul>
-      </div> -->
+   
     </div>
   </div>
 </footer>
@@ -61,8 +46,8 @@
     "language": {
       "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
     },
-    perPage: 10,
-    perPageSelect: [5, 10, 15, 30],
+    perPage: 5,
+    perPageSelect: [5, 10, 15, 30]
     
   });
 
@@ -70,25 +55,7 @@
   
 </script>
 
-<script>
-  var URLactual = window.location.pathname;
-  var URLactual = URLactual.split('/');
 
-  var nombre = "nav-" + URLactual[2];
-
-  console.log(nombre);
-  var activo = document.getElementById(nombre);
-
-  activo.classList.add('active');
-</script>
-
-<script>
-  var modalEliminar = document.getElementById('modal-confirma');
-  modalEliminar.addEventListener('show.bs.modal', function(event) {
-    var buttonEliminar = document.getElementById('btn-ok');
-    buttonEliminar.setAttribute('href', event.relatedTarget.getAttribute('data-href'));
-  });
-</script>
 
 </body>
 

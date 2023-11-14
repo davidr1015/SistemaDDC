@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo constant('URL'); ?>public/img/logo-ddc.png">
-  <link rel="icon" type="image/png" href="<?php echo constant('URL'); ?>public/img/logo-ddc.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/SistemaDDC/public/img/logo-ddc.png">
+  <link rel="icon" type="image/png" href="/SistemaDDC/public/img/logo-ddc.png">
   <title>
     Control de inventario DDC
   </title>
@@ -25,10 +25,7 @@
   <link rel="stylesheet" href="/SistemaDDC/public/css/estilo.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="/SistemaDDC/public/js/jquery-ui/jquery-ui-min.css">
-
-  <script src="/SistemaDDC/public/js/jquery-3.5.1.min.js"></script>
-  <script src="/SistemaDDC/public/js/jquery-ui/jquery-ui.min.js"></script>
+  
 
 </head>
 
@@ -91,6 +88,15 @@
             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M160 796V276H80v-60h140v520h620v60H160Zm59.115 180Q194 976 177 958.323q-17-17.677-17-42.5t17-42.323q17-17.5 42.115-17.5 25.115 0 43 17.677t17.885 42.5Q280 941 262.115 958.5t-43 17.5ZM290 666V446h220v220H290Zm60-60h100V506H350v100Zm220 60V446h220v220H570Zm60-60h100V506H630v100Zm149.823 370Q755 976 737.5 958.323t-17.5-42.5Q720 891 737.677 873.5t42.5-17.5Q805 856 822.5 873.677t17.5 42.5Q840 941 822.323 958.5t-42.5 17.5ZM350 606h100-100Zm280 0h100-100Z"/></svg>
             </div>
             <span class="nav-link-text ms-1">Compras</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/SistemaDDC/Servlet_peticiones?page=caja" class="nav-link border-bottom">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M160 796V276H80v-60h140v520h620v60H160Zm59.115 180Q194 976 177 958.323q-17-17.677-17-42.5t17-42.323q17-17.5 42.115-17.5 25.115 0 43 17.677t17.885 42.5Q280 941 262.115 958.5t-43 17.5ZM290 666V446h220v220H290Zm60-60h100V506H350v100Zm220 60V446h220v220H570Zm60-60h100V506H630v100Zm149.823 370Q755 976 737.5 958.323t-17.5-42.5Q720 891 737.677 873.5t42.5-17.5Q805 856 822.5 873.677t17.5 42.5Q840 941 822.323 958.5t-42.5 17.5ZM350 606h100-100Zm280 0h100-100Z"/></svg>
+            </div>
+            <span class="nav-link-text ms-1">Caja</span>
           </a>
         </li>
         

@@ -109,6 +109,13 @@ public class Servlet_peticiones extends HttpServlet {
             if ("ventas".equals(page)) {
                 request.getRequestDispatcher("/JSP/views/ventas/index.jsp").forward(request, response);
             }
+            
+            if ("caja".equals(page)) {
+                Vector v = Producto.consultar();
+                request.setAttribute("productos", v);
+                request.getRequestDispatcher("/JSP/views/caja/index.jsp").forward(request, response);
+            }
+
 
         } catch (Exception e) {
             request.setAttribute("msg", "Verifique Datos :" + e); // la e es el tipo de error
