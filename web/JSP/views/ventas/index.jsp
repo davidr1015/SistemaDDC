@@ -1,12 +1,12 @@
 
 <%@page import="java.util.Vector"%>
-<%@page import="Operaciones.Compra"%>
+<%@page import="Operaciones.Venta"%>
 <jsp:include page="/JSP/views/header.jsp" />
 
 
 <%
-    Vector<Compra> compra = (Vector<Compra>) request.getAttribute("compra");
-    request.removeAttribute("compra");
+    Vector<Venta> venta = (Vector<Venta>) request.getAttribute("venta");
+    request.removeAttribute("venta");
 %> 
 
 
@@ -22,7 +22,6 @@
                 <div class="table-responsive p-0">
                     <form action="/SistemaDDC/Servlet_peticiones">
                         <table class="table align-items-center mb-0" id="table">
-                            Nombre del vendedor y del cliente, el total, la fecha
                             <thead>
                                 <tr>
                                     <th width="150px" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nombre vendedor</th>
@@ -33,26 +32,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <% for (Compra p : compra) {%>
+                                <% for (Venta p : venta) {%>
                                 <tr>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0"><%= p.getId()%> </p>
+                                        <p class="text-xs font-weight-bold mb-0"><%= p.getNombre_usuario()%> </p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getNombre_usuario()%></p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getRol_usuario()%></p>
+                                        <p class="text-xs font-weight-bold mb-0"> <%= p.getNombre_cliente()%></p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0"> <%= p.getTotal()%></p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0"> <%= p.getFecha_registro()%></p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <!-- Enlace para editar -->
-                                        <a href="/SistemaDDC/Servlet_peticiones?mostrarCompra=<%= p.getId()%>">Mostrar</a>
                                     </td>
                                 </tr>
                                 <% }%> 

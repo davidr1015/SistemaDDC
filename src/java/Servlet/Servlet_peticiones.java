@@ -147,6 +147,8 @@ public class Servlet_peticiones extends HttpServlet {
                 }
 
                 if ("ventas".equals(page)) {
+                    Vector v = Venta.consultar();
+                     request.setAttribute("venta", v);
                     request.getRequestDispatcher("/JSP/views/ventas/index.jsp").forward(request, response);
                 }
 
@@ -178,6 +180,7 @@ public class Servlet_peticiones extends HttpServlet {
             } else {
                 response.sendRedirect("/SistemaDDC/");
             }
+
         } catch (Exception e) {
             request.setAttribute("msg", "Verifique Datos :" + e); // la e es el tipo de error
             request.setAttribute("target", "index.jsp");

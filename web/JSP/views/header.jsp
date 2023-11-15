@@ -102,17 +102,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <form action="/SistemaDDC/Servlet_peticiones" method="POST">
-                            <button type="submit" name="productos" class="nav-link border-bottom" id="nav-movimientos">
-                                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                                    <img width="25" height="25" src="https://img.icons8.com/ios/50/total-sales-1.png" alt="total-sales-1"/>
-                                </div>
-                                <span class="nav-link-text ms-1">Ventas</span>
-                            </button>
-                        </form>
+                        <a href="/SistemaDDC/Servlet_peticiones?page=ventas" class="nav-link border-bottom">
+                            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <img width="20" height="20" src="https://img.icons8.com/ios/50/cash-register.png" alt="cash-register"/>
+                            </div>
+                            <span class="nav-link-text ms-1">Ventas</span>
+                        </a>
                     </li>
-                    
-                    
+
+
                     <li class="nav-item">
                         <a href="/SistemaDDC/Servlet_peticiones?page=cerrarSesion" class="nav-link border-bottom">
                             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -124,6 +122,10 @@
 
                 </ul>
             </div>
+
+
+
+
             <!-- <div class="sidenav-footer mx-3 ">
               <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
                 <div class="full-background" style="background-image: url('<?php echo constant('URL') ?>public/img/curved-images/white-curved.jpg')"></div>
@@ -135,10 +137,9 @@
                 <div class="d-flex">
                   <div>
                     <img src="<?php //echo constant('URL'); ?>public/img/qr.png" class="img-thumbnail me-3" alt="user1">
+    >>>>>>> f93b59766f4ded8e8f66390e11b6cd435835a676
                   </div>
-                </div>
-              </div>
-            </div> -->
+                </div> -->
         </div>
 
     </div>
@@ -153,7 +154,7 @@
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Tables</li> -->
                 </ol>
                 <h6 class="font-weight-bolder mb-0">
-                    
+
                     Delicias del campo
                 </h6>
             </nav>
