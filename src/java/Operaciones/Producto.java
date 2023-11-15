@@ -108,6 +108,20 @@ public class Producto {
         dbm.closeConnection(con);
         return res == 1;
     }
+    
+    public static synchronized boolean sumarProducto(int id, int cantidad) throws SQLException {
+        DBManager dbm = new DBManager();
+        Connection con = dbm.getConnection();
+
+          PreparedStatement st = con.prepareStatement("UPDATE productos SET cantidad = cantidad + ? WHERE id = ?");
+        st.setInt(1, cantidad);
+        st.setInt(2, id);
+
+        int res = st.executeUpdate();
+        st.close();
+        dbm.closeConnection(con);
+        return res == 1;
+    }
 
     public static synchronized Vector consultar() throws SQLException {
         Vector<Producto> productos = new Vector<>();

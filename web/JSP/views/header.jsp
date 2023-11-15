@@ -91,6 +91,15 @@
                             <span class="nav-link-text ms-1">Compras</span>
                         </a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a href="/SistemaDDC/Servlet_peticiones?page=nueva_compra" class="nav-link border-bottom">
+                            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <img width="20" height="20" src="https://img.icons8.com/ios/50/buy--v1.png" alt="buy--v1"/>
+                            </div>
+                            <span class="nav-link-text ms-1">Nueva compra</span>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a href="/SistemaDDC/Servlet_peticiones?page=caja" class="nav-link border-bottom">

@@ -81,16 +81,7 @@
 
             <div class="row bg-body" style="height: 290px; overflow-y: auto;">
                 <ul class="list-group mb-3 carrito-items">
-                    <!--- <li class="list-group-item d-flex justify-content-between align-items-center lh-sm">
-                         <div>
-                             <h6 class="my-0">Product name</h6>
-                             <small class="text-body-secondary">Brief description</small>
-                         </div>
- 
-                         <input type="number" class="col-2" name="name" value="0" required>
-                         <span class="text-body-secondary">$12</span>
-                         <input type="submit" name="name" class="btn bg-gradient-secondary mb-0" value="Quitar">
-                     </li> -->
+                    
                 </ul>
 
             </div>
@@ -98,7 +89,7 @@
 
             <div class="row">
                 <div class="update ml-auto mr-auto ">
-                    <button type="submit" name="registrarProducto" class="btn bg-gradient-info mb-0 text-light" id="terminar-compra">Terminar compra <small class="total ml-3">$0</small></button>
+                    <button type="submit" name="registrarProducto" class="btn bg-gradient-info mb-0 text-light" id="terminar-compra">Terminar Venta <small class="total ml-3">$0</small></button>
                 </div>
             </div>
 

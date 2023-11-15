@@ -136,6 +136,11 @@ function terminarCompra() {
   const productosEnCarrito =
     carritoItems.getElementsByClassName("carrito-item");
   const productosArray = [];
+  
+  if (productosEnCarrito.length === 0) {
+        alert("El carrito esta vacio. Agregue productos antes de terminar la compra.");
+        return;
+    }
 
   for (const productoEnCarrito of productosEnCarrito) {
     const producto = productoEnCarrito.dataset.producto;
@@ -146,12 +151,11 @@ function terminarCompra() {
   }
 
    const vendedor = document.getElementById("vendedor").value;
-   const cliente = document.getElementById("cliente").value;
 
   const jsonData = {
+      accion: "compra",
     productos: productosArray,
-   vendedor: vendedor,
-   cliente: cliente
+   vendedor: vendedor
   };
 fetch('Servlet_peticiones', {
         method: 'POST',

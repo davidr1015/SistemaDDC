@@ -148,7 +148,7 @@ public class Servlet_peticiones extends HttpServlet {
 
                 if ("ventas".equals(page)) {
                     Vector v = Venta.consultar();
-                     request.setAttribute("venta", v);
+                    request.setAttribute("venta", v);
                     request.getRequestDispatcher("/JSP/views/ventas/index.jsp").forward(request, response);
                 }
 
@@ -163,6 +163,19 @@ public class Servlet_peticiones extends HttpServlet {
                     request.setAttribute("id", idUsuario);
                     request.setAttribute("nombre", nombreUsuario);
                     request.getRequestDispatcher("/JSP/views/caja/index.jsp").forward(request, response);
+                }
+
+                if ("nueva_compra".equals(page)) {
+                    Vector v = Producto.consultar();
+                    Vector v2 = Cliente.consultar();
+                    HttpSession session2 = request.getSession(false);
+                    String nombreUsuario = (String) session2.getAttribute("nombreUsuario");
+                    int idUsuario = (int) session2.getAttribute("idUsuario");
+                    request.setAttribute("productos", v);
+                    request.setAttribute("clientes", v2);
+                    request.setAttribute("id", idUsuario);
+                    request.setAttribute("nombre", nombreUsuario);
+                    request.getRequestDispatcher("/JSP/views/caja_compra/index.jsp").forward(request, response);
                 }
 
                 if ("cerrarSesion".equals(page)) {
@@ -222,7 +235,6 @@ public class Servlet_peticiones extends HttpServlet {
         java.io.PrintWriter out = response.getWriter();
 
         try {
-
 
             if (request.getParameter("productos") != null) {
                 request.getRequestDispatcher("/JSP/views/usuarios/editar.jsp").forward(request, response);
@@ -374,43 +386,81 @@ public class Servlet_peticiones extends HttpServlet {
             // Analizar el JSON utilizando Gson
             JsonParser parser = new JsonParser();
             JsonObject jsonData = parser.parse(json).getAsJsonObject();
-            int vendedor = Integer.parseInt(jsonData.get("vendedor").getAsString());
+
+            String accion = jsonData.get("accion").getAsString();
+
+            
+
+            if ("venta".equals(accion)) {
+                int vendedor = Integer.parseInt(jsonData.get("vendedor").getAsString());
             int cliente = Integer.parseInt(jsonData.get("cliente").getAsString());
+                JsonArray productosArray = jsonData.getAsJsonArray("productos");
+                double totalGeneral = 0;
 
-            JsonArray productosArray = jsonData.getAsJsonArray("productos");
-            double totalGeneral = 0;
+                out.println("vendedor: " + vendedor);
+                out.println("cliente: " + cliente);
 
-            out.println("vendedor: " + vendedor);
-            out.println("cliente: " + cliente);
-
-            for (int i = 0; i < productosArray.size(); i++) {
-                JsonObject productoJson = productosArray.get(i).getAsJsonObject();
-                double precio = Double.parseDouble(productoJson.get("precio").getAsString());
-                int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
-                double total = precio * cantidad;
-                totalGeneral += total;
-
-                out.print(totalGeneral);
-            }
-
-            int id_venta = Venta.insertar(new Venta(0, vendedor, cliente, totalGeneral, ""));
-            if (id_venta != 0) {
                 for (int i = 0; i < productosArray.size(); i++) {
                     JsonObject productoJson = productosArray.get(i).getAsJsonObject();
-                    int id = Integer.parseInt(productoJson.get("producto").getAsString());
-                    String descripcion = productoJson.get("nombre").getAsString();
-                    Double precio = Double.parseDouble(productoJson.get("precio").getAsString());
+                    double precio = Double.parseDouble(productoJson.get("precio").getAsString());
                     int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
+                    double total = precio * cantidad;
+                    totalGeneral += total;
 
-                    Venta.insertarDetalle(id_venta, new Producto(id, descripcion, precio, cantidad));
-                    Producto.restarProducto(id, cantidad);
+                    out.print(totalGeneral);
                 }
-            } else {
-                response.getWriter().write("Datos de usuario recibidos correctamente");
+
+                int id_venta = Venta.insertar(new Venta(0, vendedor, cliente, totalGeneral, ""));
+                if (id_venta != 0) {
+                    for (int i = 0; i < productosArray.size(); i++) {
+                        JsonObject productoJson = productosArray.get(i).getAsJsonObject();
+                        int id = Integer.parseInt(productoJson.get("producto").getAsString());
+                        String descripcion = productoJson.get("nombre").getAsString();
+                        Double precio = Double.parseDouble(productoJson.get("precio").getAsString());
+                        int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
+
+                        Venta.insertarDetalle(id_venta, new Producto(id, descripcion, precio, cantidad));
+                        Producto.restarProducto(id, cantidad);
+                    }
+                } else {
+                    response.getWriter().write("Datos de usuario recibidos correctamente");
+                }
             }
-//        
-//
-            // Puedes enviar una respuesta al cliente si es necesario
+            
+            
+            if ("compra".equals(accion)) {
+                int vendedor = Integer.parseInt(jsonData.get("vendedor").getAsString());
+                JsonArray productosArray = jsonData.getAsJsonArray("productos");
+                double totalGeneral = 0;
+
+                for (int i = 0; i < productosArray.size(); i++) {
+                    JsonObject productoJson = productosArray.get(i).getAsJsonObject();
+                    double precio = Double.parseDouble(productoJson.get("precio").getAsString());
+                    int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
+                    double total = precio * cantidad;
+                    totalGeneral += total;
+
+                    out.print(totalGeneral);
+                }
+
+                int id_compra = Compra.insertar(vendedor, totalGeneral);
+                if (id_compra != 0) {
+                    for (int i = 0; i < productosArray.size(); i++) {
+                        JsonObject productoJson = productosArray.get(i).getAsJsonObject();
+                        int id = Integer.parseInt(productoJson.get("producto").getAsString());
+                        String descripcion = productoJson.get("nombre").getAsString();
+                        Double precio = Double.parseDouble(productoJson.get("precio").getAsString());
+                        int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
+
+                        Compra.insertarDetalle(id_compra, new Producto(id, descripcion, precio, cantidad));
+                        Producto.sumarProducto(id, cantidad);
+                    }
+                } else {
+                    response.getWriter().write("Datos de usuario recibidos correctamente");
+                }
+            }
+
+            
 
         } catch (Exception e) {
             request.setAttribute("msg", "Verifique Datos :" + e); // la e es el tipo de error
