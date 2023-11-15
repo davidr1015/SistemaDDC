@@ -1,6 +1,10 @@
 package Servlet;
 
 import Operaciones.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,8 +33,9 @@ public class Servlet_peticiones extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
-           
+
         }
     }
 
@@ -69,7 +74,6 @@ public class Servlet_peticiones extends HttpServlet {
             String editarUsuario = request.getParameter("editarUsuario"); //Boton editarUsuario en vista usuarios/editar, recibe un id
             String eliminarUsuario = request.getParameter("eliminarUsuario"); //Boton eliminarUsuario en vista usuarios/editar, recibe un id
 
-            
             if ("usuarios".equals(page)) { // Verifica si se selecciona USUARIOS en el menu de navegacion
                 Vector v = Usuario.consultar();
                 request.setAttribute("usuarios", v);
@@ -109,13 +113,12 @@ public class Servlet_peticiones extends HttpServlet {
             if ("ventas".equals(page)) {
                 request.getRequestDispatcher("/JSP/views/ventas/index.jsp").forward(request, response);
             }
-            
+
             if ("caja".equals(page)) {
                 Vector v = Producto.consultar();
                 request.setAttribute("productos", v);
                 request.getRequestDispatcher("/JSP/views/caja/index.jsp").forward(request, response);
             }
-
 
         } catch (Exception e) {
             request.setAttribute("msg", "Verifique Datos :" + e); // la e es el tipo de error
@@ -129,6 +132,41 @@ public class Servlet_peticiones extends HttpServlet {
             throws ServletException, IOException {
 
         java.io.PrintWriter out = response.getWriter();
+
+       // Leer el cuerpo de la solicitud para obtener el JSON enviado
+        BufferedReader reader = request.getReader();
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line);
+        }
+        String json = sb.toString();
+
+        // Analizar el JSON utilizando Gson
+        JsonParser parser = new JsonParser();
+        JsonObject jsonData = parser.parse(json).getAsJsonObject();
+        String vendedor = jsonData.get("vendedor").getAsString();
+        String cliente = jsonData.get("cliente").getAsString();
+
+        JsonArray productosArray = jsonData.getAsJsonArray("productos");
+        double totalGeneral = 0;
+        
+        out.println("vendedor: " + vendedor);
+        out.println("cliente: " + cliente);
+        
+        for (int i = 0; i < productosArray.size(); i++) {
+            JsonObject productoJson = productosArray.get(i).getAsJsonObject();
+            double precio = Double.parseDouble(productoJson.get("precio").getAsString());
+            int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
+            double total = precio * cantidad;
+            totalGeneral += total;     
+        }
+        
+        
+
+        // Puedes enviar una respuesta al cliente si es necesario
+        response.getWriter().write("Datos de usuario recibidos correctamente");
+
         try {
 
             if (request.getParameter("productos") != null) {
@@ -156,9 +194,8 @@ public class Servlet_peticiones extends HttpServlet {
                 }
             }
 
-            
             String productos = request.getParameter("productos");
-             if (productos != null) {
+            if (productos != null) {
                 Vector v = Producto.consultarPorId("1");
                 request.setAttribute("producto", v);
                 request.getRequestDispatcher("/JSP/views/productos/editar.jsp").forward(request, response);
@@ -177,23 +214,22 @@ public class Servlet_peticiones extends HttpServlet {
 //                }
 //                
 //            }
-                
+
 //          Clientes
             String registrarCliente = request.getParameter("registrarCliente");
-            
+
             if (registrarCliente != null) {
-                String cedula=request.getParameter("cedula");
-                String nombre=request.getParameter("nombre");
-                String correo=request.getParameter("correo");
-                String telefono=request.getParameter("telefono");
-                String fecha_registro=request.getParameter("fecha_registro");
-                String activo=request.getParameter("activo");
-                
-               
-                if (Cliente.insertar(new Cliente(cedula,nombre,correo,telefono,activo,fecha_registro))) {
+                String cedula = request.getParameter("cedula");
+                String nombre = request.getParameter("nombre");
+                String correo = request.getParameter("correo");
+                String telefono = request.getParameter("telefono");
+                String fecha_registro = request.getParameter("fecha_registro");
+                String activo = request.getParameter("activo");
+
+                if (Cliente.insertar(new Cliente(cedula, nombre, correo, telefono, activo, fecha_registro))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=clientes");
                 }
-                
+
             }
 
             if (actualizarProducto != null) {
@@ -245,7 +281,7 @@ public class Servlet_peticiones extends HttpServlet {
                 String rol = request.getParameter("rol");
                 String login = request.getParameter("username");
                 String contraseña_actual = request.getParameter("contraseña_actual");
-                
+
                 out.print("actualziar");
 
                 if (Usuario.actualizar(new Usuario(id, nombres, rol, email, login, contraseña_actual))) {
