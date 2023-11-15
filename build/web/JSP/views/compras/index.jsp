@@ -29,7 +29,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Rol</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha Registro</th>
-                                    <th class="text-secondary opacity-7"></th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,10 +49,6 @@
                                     </td>
                                     <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0"> <%= p.getFecha_registro()%></p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <!-- Enlace para editar -->
-                                        <a href="/SistemaDDC/Servlet_peticiones?mostrarCompra=<%= p.getId()%>">Mostrar</a>
                                     </td>
                                 </tr>
                                 <% }%> 

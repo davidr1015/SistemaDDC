@@ -28,7 +28,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nombre Cliente</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha Registro</th>
-                                    <th class="text-secondary opacity-7"></th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>

@@ -104,7 +104,7 @@
                     <li class="nav-item">
                         <a href="/SistemaDDC/Servlet_peticiones?page=ventas" class="nav-link border-bottom">
                             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                                <img width="20" height="20" src="https://img.icons8.com/ios/50/cash-register.png" alt="cash-register"/>
+                                <img width="25" height="25" src="https://img.icons8.com/wired/64/bullish.png" alt="bullish"/>
                             </div>
                             <span class="nav-link-text ms-1">Ventas</span>
                         </a>
@@ -114,7 +114,7 @@
                     <li class="nav-item">
                         <a href="/SistemaDDC/Servlet_peticiones?page=cerrarSesion" class="nav-link border-bottom">
                             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                                <img width="20" height="20" src="https://img.icons8.com/ios/50/cash-register.png" alt="cash-register"/>
+                                <img width="25" height="25" src="https://img.icons8.com/wired/64/logout-rounded.png" alt="logout-rounded"/>
                             </div>
                             <span class="nav-link-text ms-1">Cerrar Sesion</span>
                         </a>
