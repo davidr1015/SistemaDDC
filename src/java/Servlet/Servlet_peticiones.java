@@ -65,6 +65,35 @@ public class Servlet_peticiones extends HttpServlet {
             }
 
 //          ****Fin Productos****
+
+//          ****Inicio Cliente****
+            String editarCliente = request.getParameter("editarCliente");
+            String eliminarCliente = request.getParameter("eliminarCliente");
+
+            if (editarCliente != null) {
+                Vector v = Cliente.consultarPorId(editarCliente);
+                request.setAttribute("cliente", v);
+                request.getRequestDispatcher("/JSP/views/clientes/editar.jsp").forward(request, response);
+            }
+
+            if (eliminarCliente != null) {
+                if (Cliente.eliminar(eliminarCliente)) {
+                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=clientes");
+                }
+            }
+//          ****Fin Cliente****
+
+//          ****Inicio Compras****
+            String mostrarCompra = request.getParameter("mostrarCompra");
+            
+            if (mostrarCompra != null) {
+                Vector v = Compra.consultarPorId(mostrarCompra);
+                request.setAttribute("compra", v);
+                request.getRequestDispatcher("/JSP/views/compras/mostrar.jsp").forward(request, response);
+            }
+
+//          ****Fin Compras****
+
 //          ****Inicio Usuarios****
             String editarUsuario = request.getParameter("editarUsuario"); //Boton editarUsuario en vista usuarios/editar, recibe un id
             String eliminarUsuario = request.getParameter("eliminarUsuario"); //Boton eliminarUsuario en vista usuarios/editar, recibe un id
@@ -103,6 +132,8 @@ public class Servlet_peticiones extends HttpServlet {
             }
 
             if ("compras".equals(page)) {
+                Vector v = Compra.consultar();
+                request.setAttribute("compra", v);
                 request.getRequestDispatcher("/JSP/views/compras/index.jsp").forward(request, response);
             }
 
@@ -250,6 +281,25 @@ public class Servlet_peticiones extends HttpServlet {
 
                 if (Usuario.actualizar(new Usuario(id, nombres, rol, email, login, contraseña_actual))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=usuarios");
+                }
+
+            }
+            
+//            Actualizar Cliente
+            String actualizarCliente = request.getParameter("actualizarCliente");
+            if (actualizarCliente != null) {
+                String cedula = request.getParameter("cedula");
+                String nombre = request.getParameter("nombre");
+                String correo = request.getParameter("correo");
+                String telefono = request.getParameter("telefono");
+                String activo = request.getParameter("activo");
+                String fecha_registro = request.getParameter("fecha_registro");
+                
+                
+
+                if (Cliente.actualizar(new Cliente(cedula, nombre, correo, telefono, activo, fecha_registro))) {
+                    out.print("actualziar");
+                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=clientes");
                 }
 
             }

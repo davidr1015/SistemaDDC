@@ -63,8 +63,12 @@
                                         <td class="align-middle text-center">
                                             <!-- Enlace para editar -->
                                         </td>
+                                        <td class="align-middle text-center">
+                                        <!-- Enlace para editar -->
+                                        <a href="/SistemaDDC/Servlet_peticiones?editarCliente=<%= p.getCedula()%>">Editar</a>
+                                        </td>
                                         <td class="align-middle">
-                                            <!-- Enlace para eliminar -->
+                                            <a href="/SistemaDDC/Servlet_peticiones?eliminarCliente=<%= p.getCedula()%>" onclick="return confirmDelete()">Eliminar</a>
                                         </td>
                                     </tr>
                         <% } %>
@@ -79,22 +83,13 @@
 </div>
 
 
-<div class="modal fade" id="modal-confirma" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Eliminar bodegas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>¿Desea eliminar esta bodega?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn bg-gradient-dark mb-0" data-bs-dismiss="modal">Cancelar</button>
-        <a class="btn bg-gradient-danger mb-0" id="btn-ok">Eliminar</a>
-      </div>
-    </div>
-  </div>
-</div>
+<script type="text/javascript">
+    function confirmDelete() {
+//Ingresamos un mensaje a mostrar
+        var mensaje = confirm("¿Deseas eliminar este registro?");
+//Detectamos si el usuario acepto el mensaje
+        return mensaje;
+    }
+</script>   
 
 <jsp:include page="/JSP/views/footer.jsp" />
