@@ -19,7 +19,7 @@
 
                 <% for (Producto p : productos) {%>
                 <div class="col producto" data-producto="<%=p.getId()%>"
-                     data-nombre="<%=p.getDescripcion()%>" data-precio="<%=p.getPrecio()%>">
+                     data-nombre="<%=p.getDescripcion()%>" data-precio="<%=p.getPrecio()%>" data-cantidad="<%=p.getCantidad()%>">
                     <div class="card shadow-sm ">
                         <svg class="bd-placeholder-img card-img-top"  role="img"  preserveAspectRatio="xMidYMid slice" focusable="false"><img style="width: 100%; height: 150px; object-fit: cover; position:absolute" src="public/uploads/<%= p.getFoto()%>" alt="alt"/></svg>
                         <div class="card-body" style="max-height: 200px;">
@@ -114,6 +114,6 @@
 </script>
 
 
-<script src="public/js/carrito.js"></script>
+<script src="public/js/carritoVenta.js"></script>
 
 <jsp:include page="/JSP/views/footer.jsp" />

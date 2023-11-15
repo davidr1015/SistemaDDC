@@ -2,15 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
+
+        <group>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/public/js/carrito.js</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/caja/index.jsp</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Producto.java</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/web/public/js/carritoVenta.js</file>
+            <file>file:/C:/Users/David/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Venta.java</file>
+     
+
         <group>
             <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/compras/index.jsp</file>
             <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/compras/mostrar.jsp</file>
             <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/src/java/Servlet/Servlet_peticiones.java</file>
             <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Compra.java</file>
         </group>
-=======
+
         <group/>
->>>>>>> 9bdf5774ab037464dcef3dc69342044ce6aea06b
     </open-files>
 </project-private>
