@@ -2,15 +2,18 @@ package Operaciones;
 
 import Operaciones.*;
 import java.sql.*;
+import java.util.Vector;
 
 public class Venta {
 
 
     private int id;
-    private int id_usuario;
     private int id_cliente;
+    private int id_usuario;
     private double total;
     private String fecha_registro;
+    private String nombre_usuario;
+    private String nombre_cliente;
 
     public Venta(int id, int id_usuario, int id_cliente, double total, String fecha_registro) {
         this.id = id;
@@ -19,6 +22,18 @@ public class Venta {
         this.total = total;
         this.fecha_registro = fecha_registro;
     }
+
+    public Venta(int id, int id_cliente, int id_usuario, double total, String fecha_registro, String nombre_usuario, String nombre_cliente) {
+        this.id = id;
+        this.id_cliente = id_cliente;
+        this.id_usuario = id_usuario;
+        this.total = total;
+        this.fecha_registro = fecha_registro;
+        this.nombre_usuario = nombre_usuario;
+        this.nombre_cliente = nombre_cliente;
+    }
+    
+    
 
  
 
@@ -78,58 +93,27 @@ public class Venta {
 
     }
 
-    public static synchronized boolean actualizar(Venta p) throws SQLException {
+    
+
+    public static synchronized Vector consultar() throws SQLException {
+         Vector<Venta> venta = new Vector<>();
         DBManager dbm = new DBManager();
-        Connection con = dbm.getConnection();
 
-        PreparedStatement st = con.prepareStatement("INSERT INTO tclientes(cedula,nombres,"
-                + "apellidos,direccion,email,celular)"
-                + "VALUES(?,?,?,?,?,?)");
-//             st.setString(1, p.getId());
-//             st.setString(2, p.getId_usuario());
-//             st.setString(2, p.getId_cliente());
-//             st.setString(3, p.getTotal());
-//             st.setString(4, p.getFecha_registro());
-        int res = st.executeUpdate();
-        st.close();
-        dbm.closeConnection(con);
-        return res == 1;
-    }
+        try (Connection con = dbm.getConnection(); PreparedStatement st = con.prepareStatement("SELECT v.id, v.id_usuario, v.id_cliente, u.nombre, c.nombre, v.total, v.fecha_registro FROM ventas v INNER JOIN clientes c ON v.id_cliente = c.cedula INNER JOIN usuarios u ON v.id_usuario = u.id"); 
+                ResultSet rs = st.executeQuery()) {
+//      int id, String descripcion, double precio, int cantidad_minima, String ubicacion, String foto
+            while (rs.next()) {
+                Venta mostrar = new Venta(rs.getInt("v.id"), rs.getInt("v.id_cliente"),
+                        rs.getInt("v.id_usuario"), rs.getDouble("v.total"),
+                        rs.getString("v.fecha_registro"), rs.getString("u.nombre"), rs.getString("c.nombre"));
+                venta.add(mostrar);
+            }
 
-    public static synchronized boolean eliminar(Venta p) throws SQLException {
-        DBManager dbm = new DBManager();
-        Connection con = dbm.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace(); // Manejar la excepción adecuadamente en tu aplicación
+        }
 
-        PreparedStatement st = con.prepareStatement("INSERT INTO tclientes(cedula,nombres,"
-                + "apellidos,direccion,email,celular)"
-                + "VALUES(?,?,?,?,?,?)");
-//             st.setString(1, p.getId());
-//             st.setString(2, p.getId_usuario());
-//             st.setString(2, p.getId_cliente());
-//             st.setString(3, p.getTotal());
-//             st.setString(4, p.getFecha_registro());
-        int res = st.executeUpdate();
-        st.close();
-        dbm.closeConnection(con);
-        return res == 1;
-    }
-
-    public static synchronized boolean consultar(Venta p) throws SQLException {
-        DBManager dbm = new DBManager();
-        Connection con = dbm.getConnection();
-
-        PreparedStatement st = con.prepareStatement("INSERT INTO tclientes(cedula,nombres,"
-                + "apellidos,direccion,email,celular)"
-                + "VALUES(?,?,?,?,?,?)");
-//             st.setString(1, p.getId());
-//             st.setString(2, p.getId_usuario());
-//             st.setString(2, p.getId_cliente());
-//             st.setString(3, p.getTotal());
-//             st.setString(4, p.getFecha_registro());
-        int res = st.executeUpdate();
-        st.close();
-        dbm.closeConnection(con);
-        return res == 1;
+        return venta;
     }
 
     public int getId() {
@@ -140,20 +124,20 @@ public class Venta {
         this.id = id;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
-    }
-
     public int getId_cliente() {
         return id_cliente;
     }
 
     public void setId_cliente(int id_cliente) {
         this.id_cliente = id_cliente;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public double getTotal() {
@@ -172,4 +156,21 @@ public class Venta {
         this.fecha_registro = fecha_registro;
     }
 
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
+    }
+
+    public String getNombre_cliente() {
+        return nombre_cliente;
+    }
+
+    public void setNombre_cliente(String nombre_cliente) {
+        this.nombre_cliente = nombre_cliente;
+    }
+
+   
 }

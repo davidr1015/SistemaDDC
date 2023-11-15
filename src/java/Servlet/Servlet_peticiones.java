@@ -140,6 +140,8 @@ public class Servlet_peticiones extends HttpServlet {
             }
             
             if ("ventas".equals(page)) {
+                Vector v = Venta.consultar();
+                request.setAttribute("venta", v);
                 request.getRequestDispatcher("/JSP/views/ventas/index.jsp").forward(request, response);
             }
             

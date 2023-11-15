@@ -101,14 +101,12 @@
         </li>
         
         <li class="nav-item">
-            <form action="/SistemaDDC/Servlet_peticiones" method="POST">
-                <button type="submit" name="productos" class="nav-link border-bottom" id="nav-movimientos">
+          <a href="/SistemaDDC/Servlet_peticiones?page=ventas" class="nav-link border-bottom">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <img width="25" height="25" src="https://img.icons8.com/ios/50/total-sales-1.png" alt="total-sales-1"/>
+            <img width="20" height="20" src="https://img.icons8.com/ios/50/cash-register.png" alt="cash-register"/>
             </div>
             <span class="nav-link-text ms-1">Ventas</span>
-          </button>
-            </form>
+          </a>
         </li>
         
       </ul>
