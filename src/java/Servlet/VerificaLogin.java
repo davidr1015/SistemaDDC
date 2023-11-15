@@ -29,7 +29,13 @@ public class VerificaLogin extends HttpServlet {
 
             if ( usuvo != null )
             {
-                response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=inventario");
+                // Si las credenciales son válidas, obtener la sesión
+            HttpSession session = request.getSession();
+            
+            // Almacenar información en la sesión
+            session.setAttribute("idUsuario", usuvo.getId());
+            session.setAttribute("nombreUsuario", usuvo.getNombre());
+            response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=inventario");
             } else   throw new NullPointerException("El usuario no existe...");
             } catch( Exception e) {
                 request.setAttribute("msg",e.getMessage());
