@@ -53,6 +53,7 @@ function agregarAlCarrito(event) {
 
     const columnaProducto = document.createElement("h6");
     columnaProducto.textContent = nombre;
+    columnaProducto.style = "width: 200px;, overflow: hidden; text-overflow: ellipsis;";
     columnaProducto.classList.add("my-0");
 
     const columnaPrecio = document.createElement("small");
@@ -65,9 +66,9 @@ function agregarAlCarrito(event) {
     infoProducto.classList.add("info-producto");
 
     const columnaCantidad = document.createElement("input");
-    columnaCantidad.type = "text";
+    columnaCantidad.type = "number";
     columnaCantidad.value = "1";
-    columnaCantidad.classList.add("cantidad", "col-1", "p-1");
+    columnaCantidad.classList.add("cantidad", "col-2", "p-2");
 
     const columnaTotal = document.createElement("span");
     columnaTotal.textContent = `$${precio.toFixed(2)}`;
@@ -137,36 +138,41 @@ function terminarCompra() {
   const productosArray = [];
 
   for (const productoEnCarrito of productosEnCarrito) {
-    const nombre =
-      productoEnCarrito.querySelector("span:nth-child(1)").textContent;
+    const producto = productoEnCarrito.dataset.producto;
+    const nombre = productoEnCarrito.dataset.nombre;
     const precio = parseFloat(productoEnCarrito.dataset.precio);
     const cantidad = parseFloat(productoEnCarrito.dataset.cantidad);
-    productosArray.push({ nombre, precio, cantidad });
+    productosArray.push({ producto, nombre, precio, cantidad });
   }
 
-  // const vendedor = document.getElementById("vendedor").value;
-  // const cliente = document.getElementById("cliente").value;
+   const vendedor = document.getElementById("vendedor").value;
+   const cliente = document.getElementById("cliente").value;
 
-  const datosVenta = {
+  const jsonData = {
     productos: productosArray,
-    // vendedor: vendedor,
-    // cliente: cliente,
+   vendedor: vendedor,
+   cliente: cliente
   };
-
-  fetch("caja/procesarVenta", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(datosVenta),
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      // Realizar acciones después de guardar en la base de datos, si es necesario
-      console.log(data);
+fetch('Servlet_peticiones', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
     })
-    .catch((error) => {
-      console.error("Error:", error);
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la solicitud al servidor');
+        }
+        return response.text();
+    })
+    .then(data => {
+        // Manejar la respuesta del servidor si es necesario
+        console.log(data);
+    })
+    .catch(error => {
+        // Manejar errores de la solicitud
+        console.error(error);
     });
 
   carritoItems.innerHTML = "";

@@ -23,6 +23,13 @@ public class Producto {
         this.foto = foto;
     }
 
+    public Producto(int id, String descripcion, double precio, int cantidad) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.cantidad = cantidad;
+    }
+
     
 
     
@@ -191,6 +198,5 @@ public class Producto {
     public void setActivo(int activo) {
         this.activo = activo;
     }
-
 
 }
