@@ -1,9 +1,16 @@
+<%@page import="Operaciones.Cliente"%>
 <%@page import="Operaciones.Producto"%>
 <%@page import="java.util.Vector"%>
 <jsp:include page="/JSP/views/header.jsp" />
 <%
+ 
     Vector<Producto> productos = (Vector<Producto>) request.getAttribute("productos");
+    Vector<Cliente> clientes = (Vector<Cliente>) request.getAttribute("clientes");
+    String nombre = (String) request.getAttribute("nombre");
+    int id = (int) request.getAttribute("id");
+      
     request.removeAttribute("productos");
+    request.removeAttribute("clientes");
 %> 
 <div class="container text-center">
     <div class="row">
@@ -50,14 +57,20 @@
                 <div class="col-md-6 pr-1">
                     <div class="form-group" style="text-align: left">
                         <label >Vendedor</label>
-                        <input type="text" class="form-control" name="vendedor" id="vendedor" required>
+                        <input type="hidden" id="vendedor" name="vendedor" value="<%=id %>">
+                        <input type="text" class="form-control" value="<%=nombre %>"  disabled>
                     </div>
                 </div>
 
                 <div class="col-md-6 pr-1">
                     <div class="form-group" style="text-align: left">
                         <label ">Cliente</label>
-                        <input type="text" class="form-control" name="cliente" id="cliente" required>
+                        <select id="cliente" name="cliente" class="form-control">
+                            <% for (Cliente p : clientes) {%>
+                            <option value="<%=p.getCedula()%>"><%=p.getNombre() %></option>
+                            <% }%>
+                        </select>
+
                     </div>
                 </div>
             </div>

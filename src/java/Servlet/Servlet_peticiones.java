@@ -24,148 +24,179 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 @WebServlet(name = "Servlet_peticiones", urlPatterns = {"/Servlet_peticiones"})
 @MultipartConfig
 public class Servlet_peticiones extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
-            
+
         }
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         java.io.PrintWriter out = response.getWriter();
+
         try {
-            
-            String page = request.getParameter("page");
+            HttpSession session = request.getSession();
+            if (session != null && session.getAttribute("nombreUsuario") != null) {
+                String page = request.getParameter("page");
 
 //        ****Inicio Productos****
-            String editarProducto = request.getParameter("editarProducto");
-            String eliminarProducto = request.getParameter("eliminarProducto");
-            
-            if ("productos".equals(page)) {
-                Vector v = Producto.consultar();
-                request.setAttribute("productos", v);
-                request.getRequestDispatcher("/JSP/views/productos/index.jsp").forward(request, response);
-            }
-            
-            if (editarProducto != null) {
-                Vector v = Producto.consultarPorId(editarProducto);
-                request.setAttribute("producto", v);
-                request.getRequestDispatcher("/JSP/views/productos/editar.jsp").forward(request, response);
-            }
-            
-            if (eliminarProducto != null) {
-                if (Producto.eliminar(eliminarProducto)) {
-                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");
+                String editarProducto = request.getParameter("editarProducto");
+                String eliminarProducto = request.getParameter("eliminarProducto");
+
+                if ("productos".equals(page)) {
+                    Vector v = Producto.consultar();
+                    request.setAttribute("productos", v);
+                    request.getRequestDispatcher("/JSP/views/productos/index.jsp").forward(request, response);
                 }
-            }
+
+                if (editarProducto != null) {
+                    Vector v = Producto.consultarPorId(editarProducto);
+                    request.setAttribute("producto", v);
+                    request.getRequestDispatcher("/JSP/views/productos/editar.jsp").forward(request, response);
+                }
+
+                if (eliminarProducto != null) {
+                    if (Producto.eliminar(eliminarProducto)) {
+                        response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");
+                    }
+                }
 
 //          ****Fin Productos****
 //          ****Inicio Cliente****
-            String editarCliente = request.getParameter("editarCliente");
-            String eliminarCliente = request.getParameter("eliminarCliente");
-            
-            if (editarCliente != null) {
-                Vector v = Cliente.consultarPorId(editarCliente);
-                request.setAttribute("cliente", v);
-                request.getRequestDispatcher("/JSP/views/clientes/editar.jsp").forward(request, response);
-            }
-            
-            if (eliminarCliente != null) {
-                if (Cliente.eliminar(eliminarCliente)) {
-                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=clientes");
+                String editarCliente = request.getParameter("editarCliente");
+                String eliminarCliente = request.getParameter("eliminarCliente");
+
+                if (editarCliente != null) {
+                    Vector v = Cliente.consultarPorId(editarCliente);
+                    request.setAttribute("cliente", v);
+                    request.getRequestDispatcher("/JSP/views/clientes/editar.jsp").forward(request, response);
                 }
-            }
+
+                if (eliminarCliente != null) {
+                    if (Cliente.eliminar(eliminarCliente)) {
+                        response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=clientes");
+                    }
+                }
 //          ****Fin Cliente****
 
 //          ****Inicio Compras****
-            String mostrarCompra = request.getParameter("mostrarCompra");
-            
-            if (mostrarCompra != null) {
-                Vector v = Compra.consultarPorId(mostrarCompra);
-                request.setAttribute("compra", v);
-                request.getRequestDispatcher("/JSP/views/compras/mostrar.jsp").forward(request, response);
-            }
+                String mostrarCompra = request.getParameter("mostrarCompra");
+
+                if (mostrarCompra != null) {
+                    Vector v = Compra.consultarPorId(mostrarCompra);
+                    request.setAttribute("compra", v);
+                    request.getRequestDispatcher("/JSP/views/compras/mostrar.jsp").forward(request, response);
+                }
 
 //          ****Fin Compras****
 //          ****Inicio Usuarios****
-            String editarUsuario = request.getParameter("editarUsuario"); //Boton editarUsuario en vista usuarios/editar, recibe un id
-            String eliminarUsuario = request.getParameter("eliminarUsuario"); //Boton eliminarUsuario en vista usuarios/editar, recibe un id
+                String editarUsuario = request.getParameter("editarUsuario"); //Boton editarUsuario en vista usuarios/editar, recibe un id
+                String eliminarUsuario = request.getParameter("eliminarUsuario"); //Boton eliminarUsuario en vista usuarios/editar, recibe un id
 
-            if ("usuarios".equals(page)) { // Verifica si se selecciona USUARIOS en el menu de navegacion
-                Vector v = Usuario.consultar();
-                request.setAttribute("usuarios", v);
-                request.getRequestDispatcher("/JSP/views/usuarios/index.jsp").forward(request, response);
-            }
-            
-            if (editarUsuario != null) {
-                Vector v = Usuario.consultarPorId(editarUsuario);
-                request.setAttribute("usuario", v);
-                request.getRequestDispatcher("/JSP/views/usuarios/editar.jsp").forward(request, response);
-            }
-            
-            if (eliminarUsuario != null) {
-                if (Usuario.eliminar(eliminarUsuario)) {
-                    response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=usuarios");
+                if ("usuarios".equals(page)) { // Verifica si se selecciona USUARIOS en el menu de navegacion
+                    Vector v = Usuario.consultar();
+                    request.setAttribute("usuarios", v);
+                    request.getRequestDispatcher("/JSP/views/usuarios/index.jsp").forward(request, response);
                 }
-            }
+
+                if (editarUsuario != null) {
+                    Vector v = Usuario.consultarPorId(editarUsuario);
+                    request.setAttribute("usuario", v);
+                    request.getRequestDispatcher("/JSP/views/usuarios/editar.jsp").forward(request, response);
+                }
+
+                if (eliminarUsuario != null) {
+                    if (Usuario.eliminar(eliminarUsuario)) {
+                        response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=usuarios");
+                    }
+                }
 
 //          ****Fin Usuarios
 //          **** Inicio Inventario****
-            if ("inventario".equals(page)) {
-                Vector v = Producto.consultar();
-                request.setAttribute("productos", v);
-                request.getRequestDispatcher("/JSP/views/inventario/index.jsp").forward(request, response);
+                if ("inventario".equals(page)) {
+                    Vector v = Producto.consultar();
+                    request.setAttribute("productos", v);
+                    request.getRequestDispatcher("/JSP/views/inventario/index.jsp").forward(request, response);
+                }
+
+                if ("clientes".equals(page)) {
+
+                    // Verificar si la sesión existe y contiene la información necesaria
+                    Vector v = Cliente.consultar();
+                    request.setAttribute("cliente", v);
+                    request.getRequestDispatcher("/JSP/views/clientes/index.jsp").forward(request, response);
+
+//                
+                }
+
+                if ("compras".equals(page)) {
+                    Vector v = Compra.consultar();
+                    request.setAttribute("compra", v);
+                    request.getRequestDispatcher("/JSP/views/compras/index.jsp").forward(request, response);
+                }
+
+                if ("ventas".equals(page)) {
+                    Vector v = Venta.consultar();
+                     request.setAttribute("venta", v);
+                    request.getRequestDispatcher("/JSP/views/ventas/index.jsp").forward(request, response);
+                }
+
+                if ("caja".equals(page)) {
+                    Vector v = Producto.consultar();
+                    Vector v2 = Cliente.consultar();
+                    HttpSession session2 = request.getSession(false);
+                    String nombreUsuario = (String) session2.getAttribute("nombreUsuario");
+                    int idUsuario = (int) session2.getAttribute("idUsuario");
+                    request.setAttribute("productos", v);
+                    request.setAttribute("clientes", v2);
+                    request.setAttribute("id", idUsuario);
+                    request.setAttribute("nombre", nombreUsuario);
+                    request.getRequestDispatcher("/JSP/views/caja/index.jsp").forward(request, response);
+                }
+
+                if ("cerrarSesion".equals(page)) {
+                    HttpSession session1 = request.getSession(false);
+
+                    if (session1 != null) {
+                        // Invalidar y cerrar la sesión
+                        session.invalidate();
+                    }
+
+                    // Redirigir al usuario al formulario de inicio de sesión o a otra página según sea necesario
+                    response.sendRedirect("/SistemaDDC/");
+                }
+
+            } else {
+                response.sendRedirect("/SistemaDDC/");
             }
-            
-            if ("clientes".equals(page)) {
-                Vector v = Cliente.consultar();
-                request.setAttribute("cliente", v);
-                request.getRequestDispatcher("/JSP/views/clientes/index.jsp").forward(request, response);
-            }
-            
-            if ("compras".equals(page)) {
-                Vector v = Compra.consultar();
-                request.setAttribute("compra", v);
-                request.getRequestDispatcher("/JSP/views/compras/index.jsp").forward(request, response);
-            }
-            
-            if ("ventas".equals(page)) {
-                Vector v = Venta.consultar();
-                request.setAttribute("venta", v);
-                request.getRequestDispatcher("/JSP/views/ventas/index.jsp").forward(request, response);
-            }
-            
-            if ("caja".equals(page)) {
-                Vector v = Producto.consultar();
-                request.setAttribute("productos", v);
-                request.getRequestDispatcher("/JSP/views/caja/index.jsp").forward(request, response);
-            }
-            
+
         } catch (Exception e) {
             request.setAttribute("msg", "Verifique Datos :" + e); // la e es el tipo de error
             request.setAttribute("target", "index.jsp");
             request.getRequestDispatcher("ServletError").forward(request, response);
         }
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         java.io.PrintWriter out = response.getWriter();
-        
+
         try {
-            
+
+
             if (request.getParameter("productos") != null) {
                 request.getRequestDispatcher("/JSP/views/usuarios/editar.jsp").forward(request, response);
             }
@@ -173,7 +204,7 @@ public class Servlet_peticiones extends HttpServlet {
 //            Productos
             String registrarProducto = request.getParameter("registrarProducto");
             String actualizarProducto = request.getParameter("actualizarProducto");
-            
+
             if (registrarProducto != null) {
                 int id = 0;
                 String descripcion = request.getParameter("descripcion");
@@ -182,20 +213,20 @@ public class Servlet_peticiones extends HttpServlet {
                 String ubicacion = request.getParameter("ubicacion");
                 int activo = 1;
                 String newFileName;
-                
+
                 Part filePart = request.getPart("foto");
                 newFileName = loadFile(filePart);
-                
+
                 if (Producto.insertar(new Producto(id, descripcion, precio, cantidad_minima, ubicacion, newFileName))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");
                 }
             }
-            
+
             String productos = request.getParameter("productos");
             if (productos != null) {
                 Vector v = Producto.consultarPorId("1");
                 request.setAttribute("producto", v);
-                request.getRequestDispatcher("/JSP/views/productos/editar.jsp").forward(request, response);
+                request.getRequestDispatcher("/JSP/views/caja/index.jsp").forward(request, response);
             }
 //            if (actualizarProducto != null) {
 //                
@@ -214,7 +245,7 @@ public class Servlet_peticiones extends HttpServlet {
 
 //          Clientes
             String registrarCliente = request.getParameter("registrarCliente");
-            
+
             if (registrarCliente != null) {
                 String cedula = request.getParameter("cedula");
                 String nombre = request.getParameter("nombre");
@@ -222,13 +253,13 @@ public class Servlet_peticiones extends HttpServlet {
                 String telefono = request.getParameter("telefono");
                 String fecha_registro = request.getParameter("fecha_registro");
                 String activo = request.getParameter("activo");
-                
+
                 if (Cliente.insertar(new Cliente(cedula, nombre, correo, telefono, activo, fecha_registro))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=clientes");
                 }
-                
+
             }
-            
+
             if (actualizarProducto != null) {
                 int id = Integer.parseInt(request.getParameter("id"));
                 String descripcion = request.getParameter("descripcion");
@@ -238,25 +269,25 @@ public class Servlet_peticiones extends HttpServlet {
                 String foto_actual = request.getParameter("foto_actual");
                 int activo = 1;
                 String newFileName;
-                
+
                 Part filePart = request.getPart("foto");
                 newFileName = loadFile(filePart);
-                
+
                 if ("".equals(newFileName)) {
                     newFileName = foto_actual;
                 }
-                
+
                 if (Producto.actualizar(new Producto(id, descripcion, precio, cantidad_minima, ubicacion, newFileName))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=productos");
                 }
-                
+
             }
 
 //            Fin Productos
 //            Usuarios
             String registrarUsuario = request.getParameter("registrarUsuario");
             String actualizarUsuario = request.getParameter("actualizarUsuario");
-            
+
             if (registrarUsuario != null) {
                 int id = Integer.parseInt(request.getParameter("cedula"));
                 String nombres = request.getParameter("nombres");
@@ -264,13 +295,13 @@ public class Servlet_peticiones extends HttpServlet {
                 String rol = request.getParameter("rol");
                 String login = request.getParameter("username");
                 String pwd = request.getParameter("contraseña");
-                
+
                 if (Usuario.insertar(new Usuario(id, nombres, rol, email, login, pwd))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=usuarios");
                 }
-                
+
             }
-            
+
             if (actualizarUsuario != null) {
                 int id = Integer.parseInt(request.getParameter("cedula"));
                 String nombres = request.getParameter("nombres");
@@ -278,13 +309,13 @@ public class Servlet_peticiones extends HttpServlet {
                 String rol = request.getParameter("rol");
                 String login = request.getParameter("username");
                 String contraseña_actual = request.getParameter("contraseña_actual");
-                
+
                 out.print("actualziar");
-                
+
                 if (Usuario.actualizar(new Usuario(id, nombres, rol, email, login, contraseña_actual))) {
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=usuarios");
                 }
-                
+
             }
 
 //            Actualizar Cliente
@@ -296,12 +327,12 @@ public class Servlet_peticiones extends HttpServlet {
                 String telefono = request.getParameter("telefono");
                 String activo = request.getParameter("activo");
                 String fecha_registro = request.getParameter("fecha_registro");
-                
+
                 if (Cliente.actualizar(new Cliente(cedula, nombre, correo, telefono, activo, fecha_registro))) {
                     out.print("actualziar");
                     response.sendRedirect("/SistemaDDC/Servlet_peticiones?page=clientes");
                 }
-                
+
             }
 
             // Leer el cuerpo de la solicitud para obtener el JSON enviado
@@ -318,53 +349,53 @@ public class Servlet_peticiones extends HttpServlet {
             JsonObject jsonData = parser.parse(json).getAsJsonObject();
             int vendedor = Integer.parseInt(jsonData.get("vendedor").getAsString());
             int cliente = Integer.parseInt(jsonData.get("cliente").getAsString());
-            
+
             JsonArray productosArray = jsonData.getAsJsonArray("productos");
             double totalGeneral = 0;
-            
+
             out.println("vendedor: " + vendedor);
             out.println("cliente: " + cliente);
-            
+
             for (int i = 0; i < productosArray.size(); i++) {
                 JsonObject productoJson = productosArray.get(i).getAsJsonObject();
                 double precio = Double.parseDouble(productoJson.get("precio").getAsString());
                 int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
                 double total = precio * cantidad;
-                totalGeneral += total;                
-                
+                totalGeneral += total;
+
                 out.print(totalGeneral);
             }
-            
-            int id_venta = Venta.insertar(new Venta(0, cliente, vendedor, totalGeneral, ""));
-            if ( id_venta != 0) {
+
+            int id_venta = Venta.insertar(new Venta(0, vendedor, cliente, totalGeneral, ""));
+            if (id_venta != 0) {
                 for (int i = 0; i < productosArray.size(); i++) {
-                JsonObject productoJson = productosArray.get(i).getAsJsonObject();
-                int id = Integer.parseInt(productoJson.get("producto").getAsString());
-                String descripcion = productoJson.get("nombre").getAsString();
-                Double precio = Double.parseDouble(productoJson.get("precio").getAsString());
-                int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
-                
-                Venta.insertarDetalle(id_venta, new Producto(id, descripcion, precio, cantidad));
-            }
-            }else{
+                    JsonObject productoJson = productosArray.get(i).getAsJsonObject();
+                    int id = Integer.parseInt(productoJson.get("producto").getAsString());
+                    String descripcion = productoJson.get("nombre").getAsString();
+                    Double precio = Double.parseDouble(productoJson.get("precio").getAsString());
+                    int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
+
+                    Venta.insertarDetalle(id_venta, new Producto(id, descripcion, precio, cantidad));
+                }
+            } else {
                 response.getWriter().write("Datos de usuario recibidos correctamente");
             }
 //        
 //
             // Puedes enviar una respuesta al cliente si es necesario
-            
+
         } catch (Exception e) {
             request.setAttribute("msg", "Verifique Datos :" + e); // la e es el tipo de error
             request.setAttribute("target", "index.jsp");
 //            request.getRequestDispatcher("ServletError").forward(request, response);
         }
     }
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";
     }
-    
+
     public String loadFile(Part filePart) throws IOException {
         String originalFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         String newFileName = "";
@@ -389,10 +420,10 @@ public class Servlet_peticiones extends HttpServlet {
             try (InputStream input = filePart.getInputStream()) {
                 Files.copy(input, Paths.get(newFilePath), StandardCopyOption.REPLACE_EXISTING);
             }
-            
+
         }
-        
+
         return newFileName;
     }
-    
+
 }

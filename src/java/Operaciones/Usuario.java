@@ -19,6 +19,16 @@ public class Usuario {
         this.pwd = pwd == null ? "" : pwd.trim();
     }
 
+    public Usuario(int id, String nombre, String rol, String login, String pwd) {
+        this.id = id;
+        this.nombre = nombre;
+        this.rol = rol;
+        this.login = login;
+        this.pwd = pwd;
+    }
+    
+    
+
     public Usuario(int id, String nombre, String rol, String email, String login, String pwd) {
         this.id = id;
         this.nombre = nombre;
@@ -36,7 +46,7 @@ public class Usuario {
         ResultSet rs = st.executeQuery("Select id, nombre, rol, login, pwd from usuarios  "
                 + " where login = '" + s_login + "' and pwd= '" + s_pwd + "' ");
         while (rs.next()) {
-            obj = new Usuario(rs.getString("nombre"), rs.getString("rol"), rs.getString("login"), rs.getString("pwd"));
+            obj = new Usuario(rs.getInt("id"),rs.getString("nombre"), rs.getString("rol"), rs.getString("login"), rs.getString("pwd"));
         }
         rs.close();
         st.close();
