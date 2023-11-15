@@ -14,7 +14,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Compras</h4>
+            <h4 class="card-title">Detalles de Compra</h4>
         </div>
         <div class="card-body">
             <br>

@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class Venta {
 
+
     private int id;
     private int id_usuario;
     private int id_cliente;
@@ -18,6 +19,8 @@ public class Venta {
         this.total = total;
         this.fecha_registro = fecha_registro;
     }
+
+ 
 
     public static synchronized int insertar(Venta p) throws SQLException {
         DBManager dbm = new DBManager();
