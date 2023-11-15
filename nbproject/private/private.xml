@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/usuarios/index.jsp</file>
-            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/header.jsp</file>
+            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/compras/index.jsp</file>
+            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/web/JSP/views/compras/mostrar.jsp</file>
+            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/src/java/Servlet/Servlet_peticiones.java</file>
+            <file>file:/C:/Users/camat/OneDrive%20-%20UNIVERSIDAD%20DEL%20SINÚ/Documents/NetBeansProjects/SistemaDDC/src/java/Operaciones/Compra.java</file>
         </group>
     </open-files>
 </project-private>

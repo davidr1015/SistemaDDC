@@ -5,17 +5,23 @@ import java.sql.*;
 public class Venta {
          private int id;
          private int id_usuario;
+         private String nombre_vendedor;
+         private String nombre_cliente;
          private int id_cliente;
          private double total;
          private String fecha_registro;
 
-    public Venta(int id, int id_usuario, int id_cliente, double total, String fecha_registro) {
+    public Venta(int id, int id_usuario, String nombre_vendedor, String nombre_cliente, int id_cliente, double total, String fecha_registro) {
         this.id = id;
         this.id_usuario = id_usuario;
+        this.nombre_vendedor = nombre_vendedor;
+        this.nombre_cliente = nombre_cliente;
         this.id_cliente = id_cliente;
         this.total = total;
         this.fecha_registro = fecha_registro;
     }
+
+    
 
     
          

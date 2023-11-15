@@ -14,7 +14,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Detalles de Compra</h4>
+            <h4 class="card-title">Venta</h4>
         </div>
         <div class="card-body">
             <br>
@@ -22,11 +22,11 @@
                 <div class="table-responsive p-0">
                     <form action="/SistemaDDC/Servlet_peticiones">
                         <table class="table align-items-center mb-0" id="table">
+                            Nombre del vendedor y del cliente, el total, la fecha
                             <thead>
                                 <tr>
-                                    <th width="150px" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id Compra</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nombre</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Rol</th>
+                                    <th width="150px" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nombre vendedor</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nombre Cliente</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha Registro</th>
                                     <th class="text-secondary opacity-7"></th>
@@ -65,14 +65,5 @@
     </div>
 </div>
 
-<!-- ... (resto del código) -->
-<script type="text/javascript">
-    function confirmDelete() {
-//Ingresamos un mensaje a mostrar
-        var mensaje = confirm("¿Deseas eliminar este registro?");
-//Detectamos si el usuario acepto el mensaje
-        return mensaje;
-    }
-</script>
 
 <jsp:include page="/JSP/views/footer.jsp" />
