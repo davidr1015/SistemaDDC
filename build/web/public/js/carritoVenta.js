@@ -155,6 +155,11 @@ function terminarCompra() {
   const productosEnCarrito =
     carritoItems.getElementsByClassName("carrito-item");
   const productosArray = [];
+  
+   if (productosEnCarrito.length === 0) {
+    alert("El carrito esta vacio. Agregue productos antes de terminar la compra.");
+    return;
+  }
 
   for (const productoEnCarrito of productosEnCarrito) {
     const producto = productoEnCarrito.dataset.producto;

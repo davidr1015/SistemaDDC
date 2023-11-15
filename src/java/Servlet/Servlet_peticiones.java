@@ -180,7 +180,34 @@ public class Servlet_peticiones extends HttpServlet {
             } else {
                 response.sendRedirect("/SistemaDDC/");
             }
-
+//<<<<<<< HEAD
+//=======
+//            
+//            if ("clientes".equals(page)) {
+//                Vector v = Cliente.consultar();
+//                request.setAttribute("cliente", v);
+//                request.getRequestDispatcher("/JSP/views/clientes/index.jsp").forward(request, response);
+//            }
+//            
+//            if ("compras".equals(page)) {
+//                Vector v = Compra.consultar();
+//                request.setAttribute("compra", v);
+//                request.getRequestDispatcher("/JSP/views/compras/index.jsp").forward(request, response);
+//            }
+//            
+//            if ("ventas".equals(page)) {
+//                Vector v = Venta.consultar();
+//                request.setAttribute("venta", v);
+//                request.getRequestDispatcher("/JSP/views/ventas/index.jsp").forward(request, response);
+//            }
+//            
+//            if ("caja".equals(page)) {
+//                Vector v = Producto.consultar();
+//                request.setAttribute("productos", v);
+//                request.getRequestDispatcher("/JSP/views/caja/index.jsp").forward(request, response);
+//            }
+//            
+//>>>>>>> f93b59766f4ded8e8f66390e11b6cd435835a676
         } catch (Exception e) {
             request.setAttribute("msg", "Verifique Datos :" + e); // la e es el tipo de error
             request.setAttribute("target", "index.jsp");
@@ -376,6 +403,7 @@ public class Servlet_peticiones extends HttpServlet {
                     int cantidad = Integer.parseInt(productoJson.get("cantidad").getAsString());
 
                     Venta.insertarDetalle(id_venta, new Producto(id, descripcion, precio, cantidad));
+                    Producto.restarProducto(id, cantidad);
                 }
             } else {
                 response.getWriter().write("Datos de usuario recibidos correctamente");

@@ -24,7 +24,11 @@
             </div>
             <div class="row" id="productos" style="overflow-y: scroll; height: 370px">
 
-                <% for (Producto p : productos) {%>
+                <% for (Producto p : productos) {
+                if (p.getCantidad() > 0) {
+                        
+                    
+                %>
                 <div class="col producto" data-producto="<%=p.getId()%>"
                      data-nombre="<%=p.getDescripcion()%>" data-precio="<%=p.getPrecio()%>" data-cantidad="<%=p.getCantidad()%>">
                     <div class="card shadow-sm ">
@@ -46,7 +50,7 @@
                     <br>
                 </div>
 
-                <% }%>
+                <% }}%>
 
             </div>
         </div>
